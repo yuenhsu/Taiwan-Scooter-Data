@@ -40,6 +40,6 @@ Alternatively, you can download the source distribution from [PyPI](https://pypi
 
 ## Script
 ### moea
-![moea graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/moea_graph.png)
+![moea graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/moea_graph.png?token=ANLAEHYO7UQJAKEITQKV2IS6SOBOA)
 
 
