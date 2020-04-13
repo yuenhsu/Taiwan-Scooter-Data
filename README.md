@@ -1,6 +1,8 @@
 # Taiwan-Scooter-Data
 Python script for scraping electricity scooter subsidy data from Taiwan government websites, cleaning collected data, and analysis. 
 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000?style=for-the-badge&.svg)](https://github.com/psf/black)
+
 ## Project
 ### Purpose
 The repository is for my research on *The Effect of Government Subsidy Program on Consumer Behaviours: A Case Study of Electric Scooters in Taiwan*. To improve air quality and recude emissions, Taiwan government started providing subsidy to encourage consumers to adopt electric scooter, over gasoline ones. 
@@ -14,8 +16,12 @@ The scripts are for automating the data collection process and exporting the res
 * [Subsidy Results](https://mobile.epa.gov.tw/LowPoll/TwostrokeStatistics.aspx?Type=O) from Environmental Protection Administration
 
 ## Getting Started
+Python is required for running the scripts. In addition, some common libraries, such as `csv`, `time`, and `calendar`, are used. 
+```bash
+$ pip install <library>
+```
 ### Optional: Virtualenv
-I also use [virtualenv](http://www.virtualenv.org) to isolate the environment for the project.
+I use [virtualenv](http://www.virtualenv.org) to isolate the environment for the project. However, this is not required to run the script.
 
 ```bash
 $ pip install virtualenv #install
@@ -26,7 +32,7 @@ $ source venv/bin/activate #activate virtual environment
 ```
 
 ### Install: ChromeDriver
-Download ChromeDriver from [Choromium](https://chromedriver.storage.googleapis.com/index.html?path=81.0.4044.69/), unzip the file and move it to `/usr/local/bin` (mac os). 
+Download ChromeDriver from [Choromium](https://chromedriver.storage.googleapis.com/index.html?path=81.0.4044.69/), unzip the file and move it from `~/Downloads/chromedriver` to `/usr/local/bin` (mac os) with the following command.
 ```bash
 $ mv ~/Downloads/chromedriver /usr/local/bin
 ```
@@ -38,8 +44,13 @@ $ pip install selenium
 ```
 Alternatively, you can download the source distribution from [PyPI](https://pypi.org/project/selenium/#files).
 
-## Script
-### moea
+## Usage
+### [moea.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/moea.py)
 ![moea graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/moea_graph.png?token=ANLAEHYO7UQJAKEITQKV2IS6SOBOA)
+
+[moea.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/moea.py) script automates the process of collecting [subsidy application information](https://www.lev.org.tw/subsidy/result.aspx) from MOEA. As shown in graph, the script 1) selects table for output format, 2) iterates through cities, 3) chooses beginning year and month, and 4) clicks research. Once the result is available, iterate through the output HTML table to collect information. After gathering information from all cities, export data to csv file.
+
+### epa
+
 
 
