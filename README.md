@@ -46,7 +46,7 @@ Alternatively, you can download the source distribution from [PyPI](https://pypi
 
 ## Usage
 ### [moea.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/moea.py)
-![moea graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/moea_graph.png?token=ANLAEHYO7UQJAKEITQKV2IS6SOBOA)
+![moea graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/moea_graph.png)
 
 [moea.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/moea.py) script automates the process of collecting [subsidy application information](https://www.lev.org.tw/subsidy/result.aspx) from MOEA. As shown in graph, the script 1) selects table for output format, 2) iterates through cities, 3) chooses beginning year and month, and 4) clicks research. Once the result is available, iterate through the output HTML table to collect information. After gathering information from all cities, export data to csv file.
 
