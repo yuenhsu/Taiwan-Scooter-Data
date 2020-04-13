@@ -15,14 +15,14 @@ class MOEA_bot():
         table_select = self.driver.find_element_by_xpath('//*[@id="rblType_1"]')
         table_select.click()
 
-        # choose beginning year
+        # choose beginning year 2012
         str_yr_opt = self.driver.find_element_by_xpath(
-            '//*[@id="ssStartYear"]/option[12]'
+            '//*[@id="ssStartYear"]/option[9]'
         )
         str_yr_opt.click()
 
-        # choose beginning month
-        str_mo_opt = self.driver.find_element_by_xpath('//*[@id="ssStartM"]/option[1]')
+        # choose beginning month September
+        str_mo_opt = self.driver.find_element_by_xpath('//*[@id="ssStartM"]/option[9]')
         str_mo_opt.click()
 
         results = []
