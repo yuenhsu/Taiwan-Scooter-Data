@@ -258,9 +258,9 @@ class EPABot():
                 break
 
         # write csv file
-        with open("20200330_EPA.csv", "w", newline="") as file:
+        with open("epa.csv", "w", newline="") as file:
 
-            writer = csv.DictWriter(file, fieldnames=["time", "type", "city", "count"])
+            writer = csv.DictWriter(file, fieldnames=["time", "type", "city", "epa_app"])
             writer.writeheader()
 
             for r in results:

@@ -86,9 +86,9 @@ class MOEA_bot():
                 sleep(2)
 
 
-        with open("20200330_MOEA.csv", "w", newline="") as csv_file:
+        with open("moea.csv", "w", newline="") as csv_file:
             writer = csv.DictWriter(
-                csv_file, fieldnames=["city", "type", "time", "MOEA_Sub"]
+                csv_file, fieldnames=["city", "type", "time", "moea_app"]
             )
             writer.writeheader()
             for r in results:
