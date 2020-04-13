@@ -38,29 +38,29 @@ $ mv ~/Downloads/chromedriver /usr/local/bin
 ```
 
 ### Install: Selenium
-I use [pip](https://pip.pypa.io/) and install the library with Terminal. 
+I use [pip](https://pip.pypa.io/) and install the library with Terminal. Alternatively, you can download the source distribution from [PyPI](https://pypi.org/project/selenium/#files).
 ```bash
 $ pip install selenium
 ```
-Alternatively, you can download the source distribution from [PyPI](https://pypi.org/project/selenium/#files).
+
 
 ## Usage
 ### moea
 ![moea graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/moea_graph.png)
 
-[moea.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/moea.py) script automates the process of collecting [subsidy application information](https://www.lev.org.tw/subsidy/result.aspx) from MOEA. As shown in graph, the script 1) selects table for output format, 2) iterates through cities, 3) chooses beginning year and month, and 4) clicks research. Once the result is available, iterate through the output HTML table to collect information. After gathering information from all cities, export data to csv file.
+[moea.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/moea.py) script automates the process of collecting [subsidy application information](https://www.lev.org.tw/subsidy/result.aspx) from MOEA. As shown in graph, the script selects table for output format, iterates through cities, chooses beginning year and month, and clicks research. Once the result is available, iterate through the output HTML table to collect information. After gathering information from all cities, export data to csv file named `moea.csv` to `output` folder. 
 
-Please note that dates in `time` column are placeholder for future aggregation. The data collected are sum of monthly total.
+I provided a copy of my result [moea.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/moea.csv), which was done on March 31st, 2020. Please note that dates in `time` column are placeholder for future aggregation. The data collected are sum of monthly total. [moea.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/moea.csv) in output folder
 
 ### epa
 ![epa graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/epa_graph.png)
 
 [epa.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/epa.py) collects [subsidy information](https://mobile.epa.gov.tw/LowPoll/TwostrokeStatistics.aspx?Type=O) from EPA. Starting from beginning date and end date datepickers, the script continues to click `<`, the previous month button, until it reaches August 2015, which is when the policy was implemented. Once done, iterate through three types of subsidy and export data to csv.
 
-Please note that dates in `time` column are placeholder for future aggregation. The data collected are sum of monthly total.
+I provided a copy of my result [epa.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/epa.csv), which was done on March 31st, 2020. Please note that dates in `time` column are placeholder for future aggregation. The data collected are sum of monthly total.
 
 ### city_name
-[city_name.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/city_name.py) collected the English and Mandarin name for every city in Taiwan from Wikipedia. 
+[city_name.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/city_name.py) collected the English and Mandarin name for every city in Taiwan from [Wikipedia](https://en.wikipedia.org/wiki/List_of_administrative_divisions_of_Taiwan). 
 
 ### subsidy_amt
 [subsidy_amt.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/subsidy_amt.csv) provides the subsidy amount from three administrations. The data was manually collected from the [Law and Regulation Database](https://law.moj.gov.tw) and the Deparment of Environmental Protection (or equivalent agency) of every city.
