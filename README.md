@@ -1,7 +1,7 @@
 # Taiwan-Scooter-Data
 Python script for scraping electricity scooter subsidy data from Taiwan government websites, cleaning collected data, and analysis. 
 
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000?style=for-the-badge&.svg)](https://github.com/psf/black)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000?style=for-the-badge&.svg)](https://github.com/psf/black) ![](https://img.shields.io/github/languages/count/yuenhsu/Taiwan-Scooter-Data?style=for-the-badge) ![](https://img.shields.io/github/last-commit/yuenhsu/Taiwan-Scooter-Data?style=for-the-badge)
 
 ## Project
 ### Purpose
