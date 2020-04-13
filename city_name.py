@@ -38,7 +38,7 @@ class city():
             entry = [mandarin.text, english.text]
             results.append(entry)
 
-        with open("city_name.text", "w") as f:
+        with open("output/city_name.text", "w") as f:
             for r in results:
                 f.write(",".join(r) + "\n")
 
