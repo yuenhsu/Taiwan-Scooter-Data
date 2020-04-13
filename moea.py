@@ -31,64 +31,52 @@ class MOEA_bot():
         for c in range(
             len(Select(self.driver.find_element_by_xpath('//*[@id="ddlCity"]')).options)
         ):
-            #locate the element and select
+            # skip if c is 0, nationwide
+            if c == 0: continue
+
+            # locate element and select
             city = Select(self.driver.find_element_by_xpath('//*[@id="ddlCity"]'))
             city.select_by_index(c)
 
-            # select scooter type
-            for t in range(
-                len(
-                    Select(
-                        self.driver.find_element_by_xpath('//*[@id="sslCar"]')
-                    ).options
-                )
+            #locate search button and click
+            search_btn = self.driver.find_element_by_xpath('//*[@id="btSel"]')
+            search_btn.click()
+
+            sleep(2)
+
+            #iterate rows in search results
+            for row in self.driver.find_elements_by_xpath(
+                '//*[@id="plType1"]/table/tbody/tr'
             ):
-                #locate the element and select
-                scooter = Select(self.driver.find_element_by_xpath('//*[@id="sslCar"]'))
-                scooter.select_by_index(t)
-
-                #locate search button and click
-                search_btn = self.driver.find_element_by_xpath('//*[@id="btSel"]')
-                search_btn.click()
-
-                sleep(2)
-
-                #iterate rows in search results
-                for row in self.driver.find_elements_by_xpath(
-                    '//*[@id="plType1"]/table/tbody/tr'
-                ):
-                    #iterate cells in each row
-                    tdata = [td.text for td in row.find_elements_by_tag_name("td")]
-                    if len(tdata) == 2:
-                        if tdata[0] != "合計":
-                            entry = {
-                                "city": self.driver.find_element_by_xpath(
-                                    '//*[@id="spanCity"]'
-                                ).text,
-                                "type": self.driver.find_element_by_xpath(
-                                    '//*[@id="spanCar"]'
-                                ).text,
-                                "time": tdata[0] + "/1",
-                                "MOEA_Sub": tdata[1],
-                            }
-                            results.append(entry)
-                        else:
-                            continue
+                #iterate cells in each row
+                tdata = [td.text for td in row.find_elements_by_tag_name("td")]
+                if len(tdata) == 2:
+                    if tdata[0] != "合計":
+                        entry = {
+                            "city": self.driver.find_element_by_xpath(
+                                '//*[@id="spanCity"]'
+                            ).text,
+                            "time": tdata[0] + "/1",
+                            "moea_app": tdata[1],
+                        }
+                        results.append(entry)
                     else:
                         continue
+                else:
+                    continue
 
-                print(
-                    self.driver.find_element_by_xpath('//*[@id="spanCity"]').text,
-                    self.driver.find_element_by_xpath('//*[@id="spanCar"]').text,
-                    "done!",
-                )
+            # print statement after the loop is done
+            print(
+                self.driver.find_element_by_xpath('//*[@id="spanCity"]').text,
+                "done!",
+            )
                 
-                sleep(2)
+            sleep(2)
 
 
         with open("output/moea.csv", "w", newline="") as csv_file:
             writer = csv.DictWriter(
-                csv_file, fieldnames=["city", "type", "time", "moea_app"]
+                csv_file, fieldnames=["city", "time", "moea_app"]
             )
             writer.writeheader()
             for r in results:

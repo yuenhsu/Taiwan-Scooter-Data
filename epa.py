@@ -219,7 +219,7 @@ class EPABot():
                                 "time": time,
                                 "type": sub_name,
                                 "city": t[0],
-                                "count": int(t[3]) + int(t[4]) + int(t[5]),
+                                "epa_app": int(t[3]) + int(t[4]) + int(t[5]),
                             }
 
                             results.append(entry)
