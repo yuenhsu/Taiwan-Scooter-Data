@@ -50,7 +50,7 @@ $ pip install selenium
 
 [moea.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/moea.py) script automates the process of collecting [subsidy application information](https://www.lev.org.tw/subsidy/result.aspx) from MOEA. As shown in graph, the script selects table for output format, iterates through cities, chooses beginning year and month, and clicks research. Once the result is available, iterate through the output HTML table to collect information. After gathering information from all cities, export data to csv file named `moea.csv` to `output` folder. 
 
-I provided a copy of my result [moea.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/moea.csv), which was done on March 31st, 2020. Please note that dates in `time` column are placeholder for future aggregation. The data collected are sum of monthly total. [moea.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/moea.csv) in output folder
+I provided a copy of my result [moea.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/moea.csv), which was done on April 13th, 2020. Please note that dates in `time` column are placeholder for future aggregation. The data collected are sum of monthly total. 
 
 ### epa
 ![epa graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/epa_graph.png)
