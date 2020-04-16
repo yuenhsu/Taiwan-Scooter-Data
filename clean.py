@@ -102,3 +102,5 @@ data = data.replace(city_name).replace(
     {"新購": "New Purchase", 
      "汰舊": "Elimination", 
      "汰舊換新": "Elimination and Purchase"})
+
+data.to_csv('output/data.csv')
