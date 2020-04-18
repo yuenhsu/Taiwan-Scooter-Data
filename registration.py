@@ -43,20 +43,21 @@ class reg():
                 results.append(entry)
 
         data = pd.DataFrame(data = results)
-        gas = data[data['fuel']=='汽油'].rename(columns={'registration':'gas_reg'}).drop(columns='fuel')
-        elec = data[data['fuel']!='汽油'].rename(columns={'registration':'elec_reg'}).drop(columns='fuel')
+
+        city_name = {}
+
+        with open('output/city_name.txt', 'r') as f:
+            for line in f:
+                line = line.strip().split(',')
+                city_name.update({line[0]:line[1]})
+
+        data = data.replace(city_name).replace({'新購':'New Purchase', '汰舊':'Elimination', '汰舊換新':'Elimination and Purchase', '汽油':'Gasoline','電能':'Electricity'})
+        data.to_csv("output/reg_long.csv", index=False)
+
+        gas = data[data['fuel']=='Gasoline'].rename(columns={'registration':'gas_reg'}).drop(columns='fuel')
+        elec = data[data['fuel']=='Electricity'].rename(columns={'registration':'elec_reg'}).drop(columns='fuel')
         data_wide = gas.merge(elec, on=['time','city'])
-        data_wide.to_csv("output/registration_wide.csv", index=False)
-
-
-        with open("output/registration.csv", "w", newline="") as file:
-
-            writer = csv.DictWriter(file, fieldnames=["time", "fuel", "city", "registration"])
-            writer.writeheader()
-
-            for r in results:
-                writer.writerow(r)
-            file.close()
+        data_wide.to_csv("output/reg_wide.csv", index=False)
 
 
 bot = reg()
