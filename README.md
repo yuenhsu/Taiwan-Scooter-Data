@@ -17,6 +17,7 @@ The scripts are for automating the data collection process and exporting the res
 * [Subsidy Results](https://www.lev.org.tw/subsidy/result.aspx) from Low Emission Vehicle by the Ministry of Economic Affairs
 * [Subsidy Results](https://mobile.epa.gov.tw/LowPoll/TwostrokeStatistics.aspx?Type=O) from Environmental Protection Administration
 * [List of Administrative Divisions of Taiwan](https://en.wikipedia.org/wiki/List_of_administrative_divisions_of_Taiwan) from Wikipedia
+* [Vehicle Registration](https://stat.thb.gov.tw/) from the Transportation Highway Bureau
 
 ## Getting Started
 Python is required for running the scripts. In addition, some common libraries, such as `csv`, `time`, and `calendar`, are used. 
@@ -67,6 +68,9 @@ I provided a copy of my result [epa.csv](https://raw.githubusercontent.com/yuenh
 
 ### subsidy_amt
 [subsidy_amt.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/subsidy_amt.csv) provides the subsidy amount from three administrations. The data was manually collected from the [Law and Regulation Database](https://law.moj.gov.tw) and the Deparment of Environmental Protection (or equivalent agency) of every city.
+
+### registration
+[registration.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/registration.py) collects scooter registration count information by fuel type. Output is available in [reg_long.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/reg_long.csv) and [reg_wide.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/reg_wide.csv) formats.
 
 ### clean
 [clean.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/clean.ipynb) provides detail of my data cleaning process to merge moea and epa data. A simplified version with less explanation is available at [clean.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/clean.py).
