@@ -5,6 +5,29 @@ Python script for scraping electricity scooter subsidy data from Taiwan governme
 ![](https://img.shields.io/badge/Language-Python-critical?style=for-the-badge) 
 ![](https://img.shields.io/github/last-commit/yuenhsu/Taiwan-Scooter-Data?style=for-the-badge) 
 
+# Table of Contents
+* [Project](https://github.com/yuenhsu/Taiwan-Scooter-Data#project)
+    * [Purpose](https://github.com/yuenhsu/Taiwan-Scooter-Data#purpose)
+    * [Data Source](https://github.com/yuenhsu/Taiwan-Scooter-Data#data-source)
+* [Getting Started](https://github.com/yuenhsu/Taiwan-Scooter-Data#getting-started)
+    * [Optional: Virtualenv](https://github.com/yuenhsu/Taiwan-Scooter-Data#optional-virtualenv)
+    * [Install: ChromeDriver](https://github.com/yuenhsu/Taiwan-Scooter-Data#install-selenium)
+    * [Install: Selenium](https://github.com/yuenhsu/Taiwan-Scooter-Data#install-selenium)
+    * [Install: Plotly](https://github.com/yuenhsu/Taiwan-Scooter-Data#install-plotly)
+* [Running Scripts](https://github.com/yuenhsu/Taiwan-Scooter-Data#running-scripts)
+    * [Data Collection: MOEA Subsidy](https://github.com/yuenhsu/Taiwan-Scooter-Data#data-collection-moea-subsidy-moeapy)
+    * [Data Collection: EPA](https://github.com/yuenhsu/Taiwan-Scooter-Data#data-collection-epa-epapy)
+    * [Data Collection: City Names Translation](https://github.com/yuenhsu/Taiwan-Scooter-Data#data-collection-city-names-translation-city_namepy)
+    * [Provided: Subsidy Amount](https://github.com/yuenhsu/Taiwan-Scooter-Data#provided-subsidy-amount-subsidy_amtcsv)
+    * [Data Collection: Scooter Registration](https://github.com/yuenhsu/Taiwan-Scooter-Data#data-collection-scooter-registration-registrationpy)
+    * [Cleaning](https://github.com/yuenhsu/Taiwan-Scooter-Data#cleaning-cleanipynb)
+    * [Visualisation](https://github.com/yuenhsu/Taiwan-Scooter-Data#visualisation-visualipynb--visual_interactiveipynb)
+* [Analysis](https://github.com/yuenhsu/Taiwan-Scooter-Data#analysis)
+    * [1. Did Electric Scooter Sales Increase?](https://github.com/yuenhsu/Taiwan-Scooter-Data#1-did-electric-scooter-sales-increase)
+    * [2. Did higher subsidy attract more electric scooter adoption?](https://github.com/yuenhsu/Taiwan-Scooter-Data#2-did-higher-subsidy-attract-more-electric-scooter-adoption)
+    * [Next](https://github.com/yuenhsu/Taiwan-Scooter-Data#next)
+* [Acknowledgements](https://github.com/yuenhsu/Taiwan-Scooter-Data#acknowledgments)
+
 # Project
 ## Purpose
 The repository is for my research on *The Effect of Government Subsidy Program on Consumer Behaviours: A Case Study of Electric Scooters in Taiwan*. To improve air quality and recude emissions, Taiwan government started providing subsidy to encourage consumers to adopt electric scooter, over gasoline ones. 
@@ -60,27 +83,27 @@ The scripts can be categoried into three topics, **data collection**, **cleaning
 
 If you don't speak Mandarin, the data collection process might be confusing. But this does not affect the scripts and, in [clean.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/clean.py), I translate everything in Mandarin to English. In addition, I have a detailed explanation for subsidy programs in `analysis` section as the policy is complicated and can be confusing.
 
-## Collection: MOEA Subsidy [moea.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/moea.py) 
+## Data Collection: MOEA Subsidy [moea.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/moea.py) 
 ![moea graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/moea_graph.png)
 
 [moea.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/moea.py) script automates the process of collecting [subsidy application information](https://www.lev.org.tw/subsidy/result.aspx) from MOEA. As shown in graph, the script selects table for output format, iterates through cities, chooses beginning year and month, and clicks research. Once the result is available, iterate through the output HTML table to collect information. After gathering information from all cities, export data to csv file named `moea.csv` to `output` folder. 
 
 I provided a copy of my result [moea.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/moea.csv), which was done on April 13th, 2020. Please note that dates in `time` column are placeholder for future aggregation. The data collected are sum of monthly total. 
 
-## Collection: EPA [epa.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/epa.py)
+## Data Collection: EPA [epa.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/epa.py)
 ![epa graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/epa_graph.png)
 
 [epa.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/epa.py) collects [subsidy information](https://mobile.epa.gov.tw/LowPoll/TwostrokeStatistics.aspx?Type=O) from EPA. Starting from beginning date and end date datepickers, the script continues to click `<`, the previous month button, until it reaches August 2015, which is when the policy was implemented. Once done, iterate through three types of subsidy and export data to csv.
 
 I provided a copy of my result [epa.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/epa.csv), which was done on March 31st, 2020. Please note that dates in `time` column are placeholder for future aggregation. The data collected are sum of monthly total.
 
-## Collection: City Names Translation [city_name.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/city_name.py)
+## Data Collection: City Names Translation [city_name.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/city_name.py)
 [city_name.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/city_name.py) collected the English and Mandarin name for every city in Taiwan from [Wikipedia](https://en.wikipedia.org/wiki/List_of_administrative_divisions_of_Taiwan). 
 
 ## Provided: Subsidy Amount [subsidy_amt.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/subsidy_amt.csv)
 [subsidy_amt.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/subsidy_amt.csv) provides the subsidy amount from three administrations. The data was manually collected from the [Law and Regulation Database](https://law.moj.gov.tw) and the Deparment of Environmental Protection (or equivalent agency) of every city.
 
-## Collection: Scooter Registration [registration.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/registration.py)
+## Data Collection: Scooter Registration [registration.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/registration.py)
 [registration.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/registration.py) collects scooter registration count information by fuel type. Output is available in [reg_long.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/reg_long.csv) and [reg_wide.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/reg_wide.csv) formats.
 
 ## Cleaning: [clean.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/clean.ipynb)
@@ -101,7 +124,7 @@ To encourage adoption of electric scooters (ES), two central government agencies
 
 For the research, I want to find out whether ES sales increased and whether the subsidy influenced the sales.
 
-### 1. Did Electric Scooter Sales Increase?
+## 1. Did Electric Scooter Sales Increase?
 ![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results1.png)
 The graph outlines the nationwide monthly number of scooter registration by fuel type from September 2012 to Feburary 2020. The bars represent the count and the line illustrates the proportion of ES of all scooters. Ideally, I have access to data from even earlier time, but prior numbers do not include fuel types. 
 
@@ -113,7 +136,7 @@ Looking at the ES proportion, the ratio consistently increase at an increasing r
 
 If I look at the ratio for each city, majority followed a similar upward trends. Lienchiang County, Penghu County, and Kinmen County are noticeably different, all of which are outlying islands. 
 
-### 2. Did higher subsidy attract more electric scooter adoption?
+## 2. Did higher subsidy attract more electric scooter adoption?
 
 ![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results3.png)
 ![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results4.png)
@@ -129,7 +152,7 @@ For **New Purchase**, the subsidy amount remained relatively stable after August
 
 Still, I do not observe a positive correlation between two variables. But without subsidy or only one, the ES sales are low. Thus, I believe the subsidy program can stimulate interest to purchase ES. However, financial incentives are not the only variable. 
 
-### Next
+## Next
 As the graphs are sufficient for my research paper, I stop exploring the data and visualisation further. However, I would like to examine the relationship between the subsidy and ES sales statistically. With more data on population, income, oil price, and others, I should be able to do a regression analysis. Furthermore, I want to see whether replacing GS with ES reduces pollutants and eventually improves air quality. 
 
 # Acknowledgments
