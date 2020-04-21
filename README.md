@@ -20,10 +20,11 @@ The scripts are for automating the data collection process and exporting the res
 * [Vehicle Registration](https://stat.thb.gov.tw/) from the Transportation Highway Bureau
 
 ## Getting Started
-Python is required for running the scripts. In addition, some common libraries, such as `csv`, `time`, and `calendar`, are used. 
+Python is required for running the scripts. In addition, some common libraries, such as `csv`, `time`, and `calendar`, are used. In addition, you should have `jupyter notebook` or similar interpreter available to be able to run the visualisation script in `.ipynb` format.
 ```bash
 $ pip install <library>
 ```
+
 ### Optional: Virtualenv
 I use [virtualenv](http://www.virtualenv.org) to isolate the environment for the project. However, this is not required to run the script.
 
@@ -47,30 +48,46 @@ I use [pip](https://pip.pypa.io/) and install the library with Terminal. Alterna
 $ pip install selenium
 ```
 
+### Install: Plotly
+For visualisation, I use [plotly](https://plotly.com/python/) to construct my initial interactive graphs. However, since Github renders my script to static html and my graphs were not displaying, I had to install `psutil`, `requests`, and `orca` to export the graphs to png format.
+```bash
+$ pip install plotly
+```
 
-## Usage
-### moea
+
+# Running Scripts
+The scripts can be categoried into three topics, **data collection**, **cleaning**, and **visualisation**. It would be the best to start from data collection, however, I provided a copy of my results in the `output` folder, and it's possible to skip the initial steps. 
+
+If you don't speak Mandarin, the data collection process might be confusing. But this does not affect the scripts and, in [clean.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/clean.py), I translate everything in Mandarin to English. In addition, I have a detailed explanation for subsidy programs in `analysis` section as the policy is complicated and can be confusing.
+
+## Collection: MOEA Subsidy [moea.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/moea.py) 
 ![moea graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/moea_graph.png)
 
 [moea.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/moea.py) script automates the process of collecting [subsidy application information](https://www.lev.org.tw/subsidy/result.aspx) from MOEA. As shown in graph, the script selects table for output format, iterates through cities, chooses beginning year and month, and clicks research. Once the result is available, iterate through the output HTML table to collect information. After gathering information from all cities, export data to csv file named `moea.csv` to `output` folder. 
 
 I provided a copy of my result [moea.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/moea.csv), which was done on April 13th, 2020. Please note that dates in `time` column are placeholder for future aggregation. The data collected are sum of monthly total. 
 
-### epa
+## Collection: EPA [epa.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/epa.py)
 ![epa graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/epa_graph.png)
 
 [epa.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/epa.py) collects [subsidy information](https://mobile.epa.gov.tw/LowPoll/TwostrokeStatistics.aspx?Type=O) from EPA. Starting from beginning date and end date datepickers, the script continues to click `<`, the previous month button, until it reaches August 2015, which is when the policy was implemented. Once done, iterate through three types of subsidy and export data to csv.
 
 I provided a copy of my result [epa.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/epa.csv), which was done on March 31st, 2020. Please note that dates in `time` column are placeholder for future aggregation. The data collected are sum of monthly total.
 
-### city_name
+## Collection: City Names Translation [city_name.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/city_name.py)
 [city_name.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/city_name.py) collected the English and Mandarin name for every city in Taiwan from [Wikipedia](https://en.wikipedia.org/wiki/List_of_administrative_divisions_of_Taiwan). 
 
-### subsidy_amt
+## Provided: Subsidy Amount [subsidy_amt.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/subsidy_amt.csv)
 [subsidy_amt.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/subsidy_amt.csv) provides the subsidy amount from three administrations. The data was manually collected from the [Law and Regulation Database](https://law.moj.gov.tw) and the Deparment of Environmental Protection (or equivalent agency) of every city.
 
-### registration
+## Collection: Scooter Registration [registration.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/registration.py)
 [registration.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/registration.py) collects scooter registration count information by fuel type. Output is available in [reg_long.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/reg_long.csv) and [reg_wide.csv](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/reg_wide.csv) formats.
 
-### clean
-[clean.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/clean.ipynb) provides detail of my data cleaning process to merge moea and epa data. A simplified version with less explanation is available at [clean.py](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/clean.py).
+## Cleaning: [clean.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/clean.ipynb)
+[clean.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/clean.ipynb) provides details of my data cleaning process to merge moea and epa data and translation. 
+
+## Visualisation: [visual.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/visual.ipynb)
+
+![vis graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/vis.gif)
+
+[visual.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/visual.ipynb) provides a static version of the visualisation. The images exported are available in the `output` directory. 
