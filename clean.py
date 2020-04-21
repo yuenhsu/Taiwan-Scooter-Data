@@ -1,19 +1,19 @@
 import pandas as pd
 
 # import moea.csv file from moea.py script
-moea = pd.read_csv("output/moea.csv")
+moea = pd.read_csv("https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/moea.csv")
 # convert time to datetime
 moea["time"] = pd.to_datetime(moea["time"], yearfirst = True).dt.date
 
 # import epa.csv file from epa.py script
-epa = pd.read_csv("output/epa.csv")
+epa = pd.read_csv("https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/epa.csv")
 # convert time to datetime
 epa["time"] = pd.to_datetime(epa["time"], yearfirst = True).dt.date
 # replace simplied chinese in city name with traditional chinese
 epa["city"] = epa["city"].str.replace("台", "臺")
 
 # import subsidy_amt.csv file from output folder
-sub = pd.read_csv("output/subsidy_amt.csv")
+sub = pd.read_csv("https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/subsidy_amt.csv")
 # convert time to datetime
 sub["time"] = pd.to_datetime(sub["time"], yearfirst = True).dt.date
 
@@ -93,7 +93,7 @@ data = before.append(after).reset_index().drop(columns = "index")
 # translate type and city columns from Mandarin to English
 city_name = {}
 
-with open("output/city_name.txt", "r") as f:
+with open("https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/city_name.txt", "r") as f:
     for line in f:
         line = line.strip().split(",")
         city_name.update({line[0]: line[1]})
