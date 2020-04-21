@@ -119,8 +119,20 @@ If I look at the ratio for each city, majority followed a similar upward trends.
 ![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results4.png)
 ![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results5.png)
 
-Three graphs above show the subsidy amount and application number from MOEA, EPA, and local government, respectively. 
+Three graphs above show the subsidy amount and application number from MOEA, EPA, and local government, respectively. Combing all three together, I get the graph below. The bars are the sum of rebatement from three sources and the line is the maximum number of applications between MOEA and EPA, based on the assumption that each eligible purchases apply for all programs.
 
 ![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results6.png)
 
-Combing all three together, 
+For **New Purchase**, the subsidy amount remained relatively stable after August 2015, but the application number continuously climbed to over 30,000 per month. For **Elimination and New Purchase**, the total amount stayed constant after August 2015, and the number of application fluctuated but generally followed an upward trend. From the graph, I do not think there is a correlation between the amount of subsidy and ES sales. However, as the graph shows the status on a national level, I decided to examine the pattern in each city.
+
+![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results7.png)
+
+Still, I do not observe a positive correlation between two variables. But without subsidy or only one, the ES sales are low. Thus, I believe the subsidy program can stimulate interest to purchase ES. However, financial incentives are not the only variable. 
+
+### Next
+As the graphs are sufficient for my research paper, I stop exploring the data and visualisation further. However, I would like to examine the relationship between the subsidy and ES sales statistically. With more data on population, income, oil price, and others, I should be able to do a regression analysis. Furthermore, I want to see whether replacing GS with ES reduces pollutants and eventually improves air quality. 
+
+# Acknowledgments
++ **Yu En Hsu**, Master of Public Administration Candidate at Maxwell School at Syracuse University - *Author and Researcher* - [Portfolio](https://yuenhsu.website)
++ **Pete Wilcoxen**, Professor, Public Administration and International Affairs at Maxwell School at Syracuse University - *Advanced Policy Analysis Instructor* - [Portfolio](https://wilcoxen.maxwell.insightworks.com/pages/44.html)
++ **David Popp**, Professor, Public Administration and International Affairs at Maxwell School at Syracuse University - *The Economics of Environmental Policy Instructor* - [Portfolio](https://dcpopp.expressions.syr.edu/)
