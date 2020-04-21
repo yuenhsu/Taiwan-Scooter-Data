@@ -90,4 +90,8 @@ I provided a copy of my result [epa.csv](https://raw.githubusercontent.com/yuenh
 
 ![vis graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/vis.gif)
 
-[visual.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/visual.ipynb) provides a static version of the visualisation. The images exported are available in the `output` directory. 
+[visual.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/visual.ipynb) provides a static version of the visualisation. As Github renders the notebook to static html, the interactive dashboard is not available on Github. However, you can view the notebook in nbviewer and enjoy the interactive dashboard.
+
+[![Project Jupyter](https://img.shields.io/badge/Open-nbviewer-orange?style=for-the-badge)](https://nbviewer.jupyter.org/github/yuenhsu/Taiwan-Scooter-Data/blob/master/visual_interactive.ipynb)
+
+The images exported are available in the `output` directory. 
