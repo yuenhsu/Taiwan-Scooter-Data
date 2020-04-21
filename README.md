@@ -5,27 +5,27 @@ Python script for scraping electricity scooter subsidy data from Taiwan governme
 ![](https://img.shields.io/badge/Language-Python-critical?style=for-the-badge) 
 ![](https://img.shields.io/github/last-commit/yuenhsu/Taiwan-Scooter-Data?style=for-the-badge) 
 
-## Project
-### Purpose
+# Project
+## Purpose
 The repository is for my research on *The Effect of Government Subsidy Program on Consumer Behaviours: A Case Study of Electric Scooters in Taiwan*. To improve air quality and recude emissions, Taiwan government started providing subsidy to encourage consumers to adopt electric scooter, over gasoline ones. 
 
 I want to use data from administration to examine whether electric scooter sales increased after the policy is implemented and whether high subsidy amount correlated with more electric scooter purchase. While the data is available online, I had difficulty extracting the information in desired format (monthly number by city). 
 
-The scripts are for automating the data collection process and exporting the results for analysis and visualisation.
+The scripts are for automating the data collection process and exporting the results for analysis and visualisation. [Getting Started](https://github.com/yuenhsu/Taiwan-Scooter-Data#getting-started) section lists the required software and libraries for running the scripts. [Running Scripts](https://github.com/yuenhsu/Taiwan-Scooter-Data#running-scripts) explains the function and order of the scripts, as well as the output files. [Analysis](https://github.com/yuenhsu/Taiwan-Scooter-Data#analysis) provides explanations on the policy, including duration, types, eligibility, and more, and summarises the findings from visualisation.
 
-### Data Source
+## Data Source
 * [Subsidy Results](https://www.lev.org.tw/subsidy/result.aspx) from Low Emission Vehicle by the Ministry of Economic Affairs
 * [Subsidy Results](https://mobile.epa.gov.tw/LowPoll/TwostrokeStatistics.aspx?Type=O) from Environmental Protection Administration
 * [List of Administrative Divisions of Taiwan](https://en.wikipedia.org/wiki/List_of_administrative_divisions_of_Taiwan) from Wikipedia
 * [Vehicle Registration](https://stat.thb.gov.tw/) from the Transportation Highway Bureau
 
-## Getting Started
+# Getting Started
 Python is required for running the scripts. In addition, some common libraries, such as `csv`, `time`, and `calendar`, are used. In addition, you should have `jupyter notebook` or similar interpreter available to be able to run the visualisation script in `.ipynb` format.
 ```bash
 $ pip install <library>
 ```
 
-### Optional: Virtualenv
+## Optional: Virtualenv
 I use [virtualenv](http://www.virtualenv.org) to isolate the environment for the project. However, this is not required to run the script.
 
 ```bash
@@ -36,19 +36,19 @@ $ virtualenv venv #create virtual environment
 $ source venv/bin/activate #activate virtual environment
 ```
 
-### Install: ChromeDriver
+## Install: ChromeDriver
 Download ChromeDriver from [Choromium](https://chromedriver.storage.googleapis.com/index.html?path=81.0.4044.69/), unzip the file and move it from `~/Downloads/chromedriver` to `/usr/local/bin` (mac os) with the following command.
 ```bash
 $ mv ~/Downloads/chromedriver /usr/local/bin
 ```
 
-### Install: Selenium
+## Install: Selenium
 I use [pip](https://pip.pypa.io/) and install the library with Terminal. Alternatively, you can download the source distribution from [PyPI](https://pypi.org/project/selenium/#files).
 ```bash
 $ pip install selenium
 ```
 
-### Install: Plotly
+## Install: Plotly
 For visualisation, I use [plotly](https://plotly.com/python/) to construct my initial interactive graphs. However, since Github renders my script to static html and my graphs were not displaying, I had to install `psutil`, `requests`, and `orca` to export the graphs to png format.
 ```bash
 $ pip install plotly
@@ -86,12 +86,41 @@ I provided a copy of my result [epa.csv](https://raw.githubusercontent.com/yuenh
 ## Cleaning: [clean.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/clean.ipynb)
 [clean.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/clean.ipynb) provides details of my data cleaning process to merge moea and epa data and translation. 
 
-## Visualisation: [visual.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/visual.ipynb)
+## Visualisation: [visual.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/visual.ipynb) & [visual_interactive.ipynb](https://nbviewer.jupyter.org/github/yuenhsu/Taiwan-Scooter-Data/blob/master/visual_interactive.ipynb)
 
 ![vis graph](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/image/vis.gif)
 
-[visual.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/visual.ipynb) provides a static version of the visualisation. As Github renders the notebook to static html, the interactive dashboard is not available on Github. However, you can view the notebook in nbviewer and enjoy the interactive dashboard.
+[visual.ipynb](https://github.com/yuenhsu/Taiwan-Scooter-Data/blob/master/visual.ipynb) provides a static version of the visualisation. As Github renders the notebook to static html, the interactive dashboard is not available on Github. The images exported are available in the `output` directory. 
 
-[![Project Jupyter](https://img.shields.io/badge/Open-nbviewer-orange?style=for-the-badge)](https://nbviewer.jupyter.org/github/yuenhsu/Taiwan-Scooter-Data/blob/master/visual_interactive.ipynb)
+However, you can view [visual_interactive.ipynb](https://nbviewer.jupyter.org/github/yuenhsu/Taiwan-Scooter-Data/blob/master/visual_interactive.ipynb) notebook in nbviewer and enjoy the interactive dashboard. [![Project Jupyter](https://img.shields.io/badge/Open-nbviewer-orange?style=for-the-badge)](https://nbviewer.jupyter.org/github/yuenhsu/Taiwan-Scooter-Data/blob/master/visual_interactive.ipynb)
 
-The images exported are available in the `output` directory. 
+# Analysis
+Two-wheelers are important transportation instrument in urban areas for their flexibility, versatility, and low costs. In Taiwan, scooters became the most popular form of transportation because majority of the commute distance is short, the year-round climate is suitable for riding, the parking is convenient. With 23 millions occupants and nearly 14 million registered scooters, Taiwan has the highest scooter density in the world. The exhausts from scooters, particular gasoline-fuelled scooters, have posed significant threat to the environment and public health.
+
+To encourage adoption of electric scooters (ES), two central government agencies, the Ministry of Economic Affairs (MOEA) and the Environmental Protection Administration (EPA) implemented subsidy programs offering rebatements for ES purchase. That is, new purchases of gasoline scooters (GS) are not eligible for receiving subsidy. MOEA started in September 2012 and EPA started in August 2015. The amount from these two entities are the same across all cities, however, the level changed overtime. In addition, local government started providing extra bonus in August 2015 as well, however, the amount differed across cities.
+
+For the research, I want to find out whether ES sales increased and whether the subsidy influenced the sales.
+
+### 1. Did Electric Scooter Sales Increase?
+![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results1.png)
+The graph outlines the nationwide monthly number of scooter registration by fuel type from September 2012 to Feburary 2020. The bars represent the count and the line illustrates the proportion of ES of all scooters. Ideally, I have access to data from even earlier time, but prior numbers do not include fuel types. 
+
+The total number experienced a sharp decline in 2013, the reason for which is unclear. I believe the government may change the requirement for scooter registration at the time. For example, a scooter registration that had not been renewed for ten years would be cancelled. The number remains stable afterwards. 
+
+Looking at the ES proportion, the ratio consistently increase at an increasing rate until Janurary 2020. The line got much flatter. As the subsidy amount was reduced to half of the original in 2020, many consumers decided to purchase new scooter at the end of 2019. 
+
+![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results2.png)
+
+If I look at the ratio for each city, majority followed a similar upward trends. Lienchiang County, Penghu County, and Kinmen County are noticeably different, all of which are outlying islands. 
+
+### 2. Did higher subsidy attract more electric scooter adoption?
+
+![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results3.png)
+![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results4.png)
+![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results5.png)
+
+Three graphs above show the subsidy amount and application number from MOEA, EPA, and local government, respectively. 
+
+![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results6.png)
+
+Combing all three together, 
