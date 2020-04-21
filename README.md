@@ -139,7 +139,11 @@ If I look at the ratio for each city, majority followed a similar upward trends.
 ## 2. Did higher subsidy attract more electric scooter adoption?
 
 ![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results3.png)
+
+-------
 ![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results4.png)
+
+-------
 ![](https://raw.githubusercontent.com/yuenhsu/Taiwan-Scooter-Data/master/output/results5.png)
 
 Three graphs above show the subsidy amount and application number from MOEA, EPA, and local government, respectively. Combing all three together, I get the graph below. The bars are the sum of rebatement from three sources and the line is the maximum number of applications between MOEA and EPA, based on the assumption that each eligible purchases apply for all programs.
